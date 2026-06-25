@@ -92,11 +92,16 @@ Cada categoria é uma "pasta" visual. Ao clicar, abre uma página dedicada com o
 - [x] Inicializar projeto Next.js + Tailwind
 
 #### Etapa 2 — Arquitetura e backend
-- [ ] Configurar Supabase (tabelas: categorias, vídeos)
-- [ ] Integrar Bunny.net (upload e streaming de vídeos)
-- [ ] Criar estrutura de rotas (dashboard → categoria → vídeos)
-- [ ] Implementar lógica de dados (listar categorias, listar vídeos por categoria)
-- [ ] Botão "Fale comigo" no rodapé → WhatsApp
+- [x] Configurar Supabase (tabelas `categorias` e `videos`, RLS leitura pública) — `supabase/schema.sql`
+- [x] Integrar Bunny.net Stream (helper de URLs em `src/lib/bunny.ts`, player via iframe) — upload de vídeos é manual pelo painel Bunny
+- [x] Criar estrutura de rotas (dashboard `/` → categoria `/categoria/[slug]` → vídeos)
+- [x] Implementar lógica de dados (`src/lib/data.ts`)
+- [x] Botão "Fale comigo" no rodapé → WhatsApp (`src/components/Footer.tsx`)
+
+**Notas técnicas:**
+- Next.js 16.2.9: `params` em rotas dinâmicas é `Promise` — sempre `await params`
+- Chaves em `portfolio/.env.local` (NÃO versionado): URL+anon do Supabase, Library ID + CDN Hostname + API Key do Bunny
+- Dados de exemplo: 3 categorias (Casamento, Corporativo, Social Media) inseridas via schema.sql
 
 #### Etapa 3 — Design e identidade visual
 - [ ] Miguel envia referências de sites
