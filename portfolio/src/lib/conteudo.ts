@@ -60,6 +60,14 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     vertical: true,
     ordem: 2,
   },
+  {
+    id: "local-asmr-f50",
+    categoria_slug: "institucional",
+    titulo: "ASMR F50",
+    bunny_video_id: "0afa01e1-15a1-4029-bcc7-6731bf547a99",
+    vertical: true,
+    ordem: 3,
+  },
   // Fora do ar por decisão do Miguel (02/07/2026) — vídeos continuam no Bunny:
   //   "Noite no Museu"      guid 0eee6fa5-9e16-4c07-9b5f-12f4a37ef76e
   //   "Escola de Restauro"  guid 32e78dff-4bc0-4bb0-bc86-f355e9088c4c
@@ -135,14 +143,6 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   // ---- Social Media ----
   // "Barbearia" fora do ar (nome do cliente não identificado p/ marcar) —
   // guid 167d85bc-4332-4504-9b4c-23772c3fab04 continua no Bunny.
-  {
-    id: "local-asmr-f50",
-    categoria_slug: "social",
-    titulo: "ASMR F50",
-    bunny_video_id: "0afa01e1-15a1-4029-bcc7-6731bf547a99",
-    vertical: true,
-    ordem: 1,
-  },
   {
     id: "local-academia",
     categoria_slug: "social",
