@@ -14,7 +14,7 @@ insert into videos (categoria_id, titulo, bunny_video_id, ordem)
 select id, v.titulo, v.guid, v.ordem
 from categorias,
   (values
-    ('Paris Rétromobile', '7f4785ff-dcb9-49c5-ae43-1805d6858cc5', 1),
+    ('Paris Rétromobile', 'd2279cf4-eacc-4f95-bf9f-2e937ad4ce66', 1),
     ('Corso Carnavalesco', '524766ac-6191-48e2-82a1-984e30d42388', 2)
   ) as v(titulo, guid, ordem)
 where categorias.slug = 'eventos'

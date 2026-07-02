@@ -98,7 +98,7 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     categoria_slug: "eventos",
     titulo: "Paris Rétromobile",
     cliente: "Evento em Paris, França",
-    bunny_video_id: "7f4785ff-dcb9-49c5-ae43-1805d6858cc5",
+    bunny_video_id: "d2279cf4-eacc-4f95-bf9f-2e937ad4ce66",
     vertical: true,
     ordem: 1,
   },
