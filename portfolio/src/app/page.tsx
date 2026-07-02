@@ -1,40 +1,152 @@
 import Link from "next/link";
 import { getCategorias } from "@/lib/data";
+import { bunnyHeroEmbedUrl } from "@/lib/bunny";
+import { DESTAQUE } from "@/lib/conteudo";
+import { WHATSAPP_URL } from "@/lib/site";
+import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-// Página inicial / dashboard — lista todas as categorias de serviço.
-export default async function Dashboard() {
+// Página inicial: hero com o reel em destaque (autoplay, sem som, em loop),
+// grid de categorias e um resumo do jeito de editar.
+export default async function Home() {
   const categorias = await getCategorias();
 
   return (
-    <main className="min-h-screen bg-neutral-950 px-6 py-16 text-white">
-      <div className="mx-auto max-w-5xl">
-        <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Miguel Edits</h1>
-          <p className="mt-3 text-white/60">Portfólio de edição de vídeo</p>
-        </header>
+    <main className="min-h-screen">
+      <Nav />
 
-        <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categorias.map((cat) => (
+      {/* ---------- HERO ---------- */}
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-28 md:grid-cols-2 md:pt-36">
+        <div>
+          <p className="font-display text-xs font-medium uppercase tracking-[0.35em] text-accent">
+            Editor de vídeo
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Histórias que
+            <br />
+            se <span className="text-accent">movem</span>.
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-foreground/55">
+            Reels, vídeos institucionais e eventos — do corte ao sound design,
+            cada frame no lugar certo.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-green-600 px-7 py-3 font-medium text-white transition hover:bg-green-500"
+            >
+              Fale comigo
+            </a>
+            <a
+              href="#trabalhos"
+              className="rounded-full border border-white/15 px-7 py-3 font-medium text-foreground/80 transition hover:border-accent hover:text-accent"
+            >
+              Ver trabalhos
+            </a>
+          </div>
+
+          <p className="mt-10 text-sm text-foreground/40">
+            Em destaque:{" "}
+            <span className="text-foreground/70">{DESTAQUE.titulo}</span>
+            {DESTAQUE.cliente && <> · {DESTAQUE.cliente}</>}
+          </p>
+        </div>
+
+        {/* Reel em destaque numa moldura de celular — o formato nativo dele */}
+        <div className="flex justify-center md:justify-end">
+          <div className="relative aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[2rem] border border-white/10 bg-surface shadow-[0_0_80px_-20px_rgba(224,170,62,0.25)]">
+            <iframe
+              src={bunnyHeroEmbedUrl(DESTAQUE.bunny_video_id)}
+              className="absolute inset-0 h-full w-full"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              title={DESTAQUE.titulo}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- TRABALHOS / CATEGORIAS ---------- */}
+      <section id="trabalhos" className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mb-10 flex items-end justify-between">
+          <h2 className="font-display text-3xl font-semibold tracking-tight">
+            Trabalhos
+          </h2>
+          <p className="hidden text-sm text-foreground/40 sm:block">
+            Escolha uma categoria
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categorias.map((cat, i) => (
             <Link
               key={cat.id}
               href={`/categoria/${cat.slug}`}
-              className="group flex aspect-video flex-col justify-end rounded-xl border border-white/10 bg-neutral-900 p-6 transition hover:border-white/30 hover:bg-neutral-800"
+              className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl border border-white/8 bg-surface p-6 transition hover:border-accent/60"
             >
-              <h2 className="text-xl font-semibold">{cat.nome}</h2>
-              {cat.descricao && (
-                <p className="mt-1 text-sm text-white/50">{cat.descricao}</p>
-              )}
+              <span className="font-display text-sm text-foreground/30 transition group-hover:text-accent">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="font-display text-2xl font-semibold tracking-tight">
+                  {cat.nome}
+                </h3>
+                {cat.descricao && (
+                  <p className="mt-1.5 text-sm text-foreground/45">
+                    {cat.descricao}
+                  </p>
+                )}
+                <span className="mt-4 inline-block text-sm text-accent opacity-0 transition group-hover:opacity-100">
+                  Ver vídeos →
+                </span>
+              </div>
             </Link>
           ))}
-        </section>
+        </div>
+      </section>
 
-        {categorias.length === 0 && (
-          <p className="text-center text-white/40">
-            Nenhuma categoria cadastrada ainda.
-          </p>
-        )}
+      {/* ---------- COMO EU EDITO ---------- */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="mb-10 font-display text-3xl font-semibold tracking-tight">
+          Cada detalhe conta
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              titulo: "Ritmo",
+              texto:
+                "Cortes no tempo da música: aberturas que prendem nos primeiros segundos e respiros na hora certa.",
+            },
+            {
+              titulo: "Sound design",
+              texto:
+                "Transições, whooshes e ambiente casados frame a frame com a imagem — o som conduz a emoção.",
+            },
+            {
+              titulo: "Acabamento",
+              texto:
+                "Cor, movimento e legendas revisadas: o vídeo pronto para publicar, do jeito que a marca precisa.",
+            },
+          ].map((item) => (
+            <div
+              key={item.titulo}
+              className="rounded-2xl border border-white/8 bg-surface p-6"
+            >
+              <h3 className="font-display text-lg font-semibold text-accent">
+                {item.titulo}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/55">
+                {item.texto}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
+      <div className="mx-auto max-w-6xl px-6">
         <Footer />
       </div>
     </main>

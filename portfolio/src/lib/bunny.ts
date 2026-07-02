@@ -13,6 +13,14 @@ export function bunnyEmbedUrl(videoId: string): string {
 }
 
 /**
+ * URL do player para o vídeo em destaque no hero: começa sozinho, sem som,
+ * em loop — o visitante vê a edição acontecendo assim que abre o site.
+ */
+export function bunnyHeroEmbedUrl(videoId: string): string {
+  return `${bunnyEmbedUrl(videoId)}?autoplay=true&muted=true&loop=true&preload=true`;
+}
+
+/**
  * URL da thumbnail (imagem de capa) gerada automaticamente pelo Bunny.
  */
 export function bunnyThumbnailUrl(videoId: string): string {
