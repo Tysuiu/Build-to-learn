@@ -131,6 +131,15 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   },
 ];
 
+// Capas dos cards de categoria na home — frames extraídos dos próprios
+// vídeos (ffmpeg), servidos de public/capas/. Se a categoria tiver
+// capa_url no banco, o banco vence.
+export const CAPAS_LOCAIS: Record<string, string> = {
+  institucional: "/capas/institucional.jpg",
+  casamento: "/capas/casamento.jpg",
+  social: "/capas/social.jpg",
+};
+
 // Vídeo em destaque no topo da home (hero).
 export const DESTAQUE = {
   bunny_video_id: "0a5237fc-9d20-429a-86e4-d04781d131ca",

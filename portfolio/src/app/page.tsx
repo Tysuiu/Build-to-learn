@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getCategorias } from "@/lib/data";
 import { bunnyHeroEmbedUrl } from "@/lib/bunny";
-import { DESTAQUE } from "@/lib/conteudo";
+import { CAPAS_LOCAIS, DESTAQUE } from "@/lib/conteudo";
 import { WHATSAPP_URL } from "@/lib/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -81,30 +82,47 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categorias.map((cat, i) => (
-            <Link
-              key={cat.id}
-              href={`/categoria/${cat.slug}`}
-              className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl border border-white/8 bg-surface p-6 transition hover:border-accent/60"
-            >
-              <span className="font-display text-sm text-foreground/30 transition group-hover:text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="font-display text-2xl font-semibold tracking-tight">
-                  {cat.nome}
-                </h3>
-                {cat.descricao && (
-                  <p className="mt-1.5 text-sm text-foreground/45">
-                    {cat.descricao}
-                  </p>
+          {categorias.map((cat, i) => {
+            const capa = cat.capa_url ?? CAPAS_LOCAIS[cat.slug];
+            return (
+              <Link
+                key={cat.id}
+                href={`/categoria/${cat.slug}`}
+                className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl border border-white/8 bg-surface p-6 transition hover:border-accent/60"
+              >
+                {/* Capa: frame do próprio trabalho + gradiente pra leitura do texto */}
+                {capa && (
+                  <>
+                    <Image
+                      src={capa}
+                      alt={`Capa da categoria ${cat.nome}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/20 transition group-hover:from-black/75" />
+                  </>
                 )}
-                <span className="mt-4 inline-block text-sm text-accent opacity-0 transition group-hover:opacity-100">
-                  Ver vídeos →
+
+                <span className="relative font-display text-sm text-foreground/50 transition group-hover:text-accent">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-              </div>
-            </Link>
-          ))}
+                <div className="relative">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight">
+                    {cat.nome}
+                  </h3>
+                  {cat.descricao && (
+                    <p className="mt-1.5 text-sm text-foreground/60">
+                      {cat.descricao}
+                    </p>
+                  )}
+                  <span className="mt-4 inline-block text-sm text-accent opacity-0 transition group-hover:opacity-100">
+                    Ver vídeos →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

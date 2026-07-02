@@ -21,6 +21,15 @@ export function bunnyHeroEmbedUrl(videoId: string): string {
 }
 
 /**
+ * URL do player para os cards das categorias: SEM autoplay — o player do
+ * Bunny liga o autoplay por padrão, e vários vídeos tocando juntos na
+ * mesma página é ruim. Aqui o vídeo só começa quando o visitante dá play.
+ */
+export function bunnyCardEmbedUrl(videoId: string): string {
+  return `${bunnyEmbedUrl(videoId)}?autoplay=false&preload=false`;
+}
+
+/**
  * URL da thumbnail (imagem de capa) gerada automaticamente pelo Bunny.
  */
 export function bunnyThumbnailUrl(videoId: string): string {

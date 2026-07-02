@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCategoriaPorSlug, getVideosPorCategoria } from "@/lib/data";
-import { bunnyEmbedUrl } from "@/lib/bunny";
+import { bunnyCardEmbedUrl } from "@/lib/bunny";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -56,7 +56,7 @@ export default async function CategoriaPage({
                 }`}
               >
                 <iframe
-                  src={bunnyEmbedUrl(video.bunny_video_id)}
+                  src={bunnyCardEmbedUrl(video.bunny_video_id)}
                   loading="lazy"
                   className="absolute inset-0 h-full w-full"
                   allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
