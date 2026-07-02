@@ -24,7 +24,7 @@ export default function Footer() {
           Fale comigo
         </a>
         <p className="mt-10 text-sm text-foreground/30">
-          © {new Date().getFullYear()} Miguel Edits — Editor de vídeo
+          © {new Date().getFullYear()} Miguel Sansigolo — Vídeo Editor
         </p>
       </div>
     </footer>

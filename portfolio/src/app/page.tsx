@@ -19,7 +19,7 @@ export default async function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-28 md:grid-cols-2 md:pt-36">
         <div>
           <p className="font-display text-xs font-medium uppercase tracking-[0.35em] text-accent">
-            Editor de vídeo
+            Vídeo Editor
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Histórias que

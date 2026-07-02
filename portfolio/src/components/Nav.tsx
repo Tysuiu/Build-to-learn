@@ -11,7 +11,7 @@ export default function Nav() {
           href="/"
           className="font-display text-sm font-semibold uppercase tracking-[0.3em]"
         >
-          Miguel<span className="text-accent">.</span>Edits
+          Miguel<span className="text-accent">.</span>Sansigolo
         </Link>
         <a
           href={WHATSAPP_URL}

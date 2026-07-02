@@ -1,8 +1,8 @@
 // Constantes do site — um lugar só para nome, contato e textos fixos.
 
 export const SITE = {
-  nome: "Miguel Edits",
-  titulo: "Miguel Edits — Editor de Vídeo",
+  nome: "Miguel Sansigolo",
+  titulo: "Miguel Sansigolo — Vídeo Editor",
   descricao:
     "Edição de vídeo com ritmo, sound design e cor: Reels, vídeos institucionais e eventos. Vale do Paraíba — SP.",
 };
