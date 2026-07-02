@@ -114,10 +114,12 @@ Cada categoria é uma "pasta" visual. Ao clicar, abre uma página dedicada com o
 - [ ] Revisão do design com Miguel (ajustes de gosto)
 
 #### Etapa 4 — Deploy e domínio
-- [ ] Conectar repositório à Vercel
-- [ ] Primeiro deploy (preview)
+- [x] Projeto `miguel-edits` criado na Vercel (plano Hobby gratuito, time `miguelsmov`, login `saiberback-4170`) via CLI — `.vercel/` local guarda o link (gitignored)
+- [x] Deploy de produção no ar: **https://miguel-edits.vercel.app** (env vars públicas configuradas em production+preview pela CLI; deploy manual `npx vercel deploy --prod`)
+- [ ] Conectar repositório GitHub à Vercel (deploy automático a cada push) — hoje o deploy é manual pela CLI
 - [ ] Configurar domínio personalizado (se tiver)
-- [ ] SSL e configurações de produção
+
+**Conteúdo no ar (02/07/2026):** 11 vídeos verticais — categoria nova **Institucional** (CARDE: Acervo em Movimento, Mercedes SL600, Noite no Museu, Escola de Restauro; Murano: à Noite, Café, Ensaio), Casamento (Vivi & André, Pré-Wedding), Social Media (Barbearia, Academia). Corporativo oculta (vazia). Curadoria feita das pastas verdes do SSD (`18.06.26 CARDE/ENTREGA`) e `IMPORTS/`. Site pensado pra bio do Instagram.
 
 #### Etapa 5 — Polish e lançamento
 - [x] Lazy loading dos vídeos (performance) — `loading="lazy"` nos iframes das categorias
