@@ -49,30 +49,16 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     vertical: true,
     ordem: 2,
   },
-  {
-    id: "local-noite-no-museu",
-    categoria_slug: "institucional",
-    titulo: "Noite no Museu",
-    cliente: "CARDE — Museu do Automóvel",
-    bunny_video_id: "0eee6fa5-9e16-4c07-9b5f-12f4a37ef76e",
-    vertical: true,
-    ordem: 3,
-  },
-  {
-    id: "local-escola-de-restauro",
-    categoria_slug: "institucional",
-    titulo: "Escola de Restauro",
-    cliente: "CARDE — Museu do Automóvel",
-    bunny_video_id: "32e78dff-4bc0-4bb0-bc86-f355e9088c4c",
-    vertical: true,
-    ordem: 4,
-  },
-  // ---- Institucional: Murano ----
+  // Fora do ar por decisão do Miguel (02/07/2026) — vídeos continuam no Bunny:
+  //   "Noite no Museu"      guid 0eee6fa5-9e16-4c07-9b5f-12f4a37ef76e
+  //   "Escola de Restauro"  guid 32e78dff-4bc0-4bb0-bc86-f355e9088c4c
+
+  // ---- Institucional: Murano Pousada Boutique ----
   {
     id: "local-murano-noite",
     categoria_slug: "institucional",
-    titulo: "Murano à Noite",
-    cliente: "Murano",
+    titulo: "Anoitecer na Murano",
+    cliente: "Murano Pousada Boutique",
     bunny_video_id: "09edf0af-4016-4a9e-8792-3c9329184556",
     vertical: true,
     ordem: 5,
@@ -81,7 +67,7 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     id: "local-cafe-murano",
     categoria_slug: "institucional",
     titulo: "Café na Murano",
-    cliente: "Murano",
+    cliente: "Murano Pousada Boutique",
     bunny_video_id: "dc6cf4b4-b532-4518-9ef7-e228ae43943b",
     vertical: true,
     ordem: 6,
@@ -89,8 +75,8 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   {
     id: "local-ensaio-murano",
     categoria_slug: "institucional",
-    titulo: "Ensaio na Murano",
-    cliente: "Murano",
+    titulo: "Experiência Murano",
+    cliente: "Murano Pousada Boutique",
     bunny_video_id: "cdfd47bf-5db4-46fc-bc5e-213ab092e3cd",
     vertical: true,
     ordem: 7,
@@ -124,7 +110,8 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   {
     id: "local-academia",
     categoria_slug: "social",
-    titulo: "Academia",
+    titulo: "Mobility Gym",
+    cliente: "Mobility GYM — Personal Club · Campos do Jordão",
     bunny_video_id: "8df6b068-40f9-4481-af21-b7624680a44a",
     vertical: true,
     ordem: 2,
