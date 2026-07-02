@@ -17,56 +17,77 @@ export default async function Home() {
       <Nav />
 
       {/* ---------- HERO ---------- */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-28 md:grid-cols-2 md:pt-36">
-        <div>
-          <p className="font-display text-xs font-medium uppercase tracking-[0.35em] text-accent">
-            Vídeo Editor
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Histórias que
-            <br />
-            se <span className="text-accent">movem</span>.
-          </h1>
-          <p className="mt-6 max-w-md text-lg text-foreground/55">
-            Reels, vídeos institucionais e eventos — do corte ao sound design,
-            cada frame no lugar certo.
-          </p>
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-28 md:pt-36">
+        <div
+          className={
+            DESTAQUE.vertical
+              ? "grid items-center gap-12 md:grid-cols-2"
+              : undefined
+          }
+        >
+          <div>
+            <p className="font-display text-xs font-medium uppercase tracking-[0.35em] text-accent">
+              Vídeo Editor
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              Histórias que
+              <br />
+              se <span className="text-accent">movem</span>.
+            </h1>
+            <p className="mt-6 max-w-md text-lg text-foreground/55">
+              Reels, vídeos institucionais e eventos — do corte ao sound
+              design, cada frame no lugar certo.
+            </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-green-600 px-7 py-3 font-medium text-white transition hover:bg-green-500"
-            >
-              Fale comigo
-            </a>
-            <a
-              href="#trabalhos"
-              className="rounded-full border border-white/15 px-7 py-3 font-medium text-foreground/80 transition hover:border-accent hover:text-accent"
-            >
-              Ver trabalhos
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-green-600 px-7 py-3 font-medium text-white transition hover:bg-green-500"
+              >
+                Fale comigo
+              </a>
+              <a
+                href="#trabalhos"
+                className="rounded-full border border-white/15 px-7 py-3 font-medium text-foreground/80 transition hover:border-accent hover:text-accent"
+              >
+                Ver trabalhos
+              </a>
+            </div>
+
+            <p className="mt-10 text-sm text-foreground/40">
+              Em destaque:{" "}
+              <span className="text-foreground/70">{DESTAQUE.titulo}</span>
+              {DESTAQUE.cliente && <> · {DESTAQUE.cliente}</>}
+            </p>
           </div>
 
-          <p className="mt-10 text-sm text-foreground/40">
-            Em destaque:{" "}
-            <span className="text-foreground/70">{DESTAQUE.titulo}</span>
-            {DESTAQUE.cliente && <> · {DESTAQUE.cliente}</>}
-          </p>
-        </div>
-
-        {/* Reel em destaque numa moldura de celular — o formato nativo dele */}
-        <div className="flex justify-center md:justify-end">
-          <div className="relative aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[2rem] border border-white/10 bg-surface shadow-[0_0_80px_-20px_rgba(224,170,62,0.25)]">
-            <iframe
-              src={bunnyHeroEmbedUrl(DESTAQUE.bunny_video_id)}
-              className="absolute inset-0 h-full w-full"
-              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              title={DESTAQUE.titulo}
-            />
-          </div>
+          {DESTAQUE.vertical ? (
+            /* Reel em destaque numa moldura de celular — formato 9:16 */
+            <div className="flex justify-center md:justify-end">
+              <div className="relative aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[2rem] border border-white/10 bg-surface shadow-[0_0_80px_-20px_rgba(224,170,62,0.25)]">
+                <iframe
+                  src={bunnyHeroEmbedUrl(DESTAQUE.bunny_video_id)}
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  title={DESTAQUE.titulo}
+                />
+              </div>
+            </div>
+          ) : (
+            /* Vídeo horizontal em destaque — painel cinema 16:9 em largura cheia */
+            <div className="relative mt-12 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-surface shadow-[0_0_80px_-20px_rgba(224,170,62,0.25)]">
+              <iframe
+                src={bunnyHeroEmbedUrl(DESTAQUE.bunny_video_id)}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                title={DESTAQUE.titulo}
+              />
+            </div>
+          )}
         </div>
       </section>
 

@@ -75,12 +75,15 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     ordem: 7,
   },
   // ---- Casamento ----
+  // Versão horizontal 1920x1080 original (sem re-encode). A "vertical"
+  // (guid f41865ac-2238-46d8-9882-741672a84c6c) está com os pixels
+  // rotacionados dentro do arquivo e toca deitada — fora do ar.
   {
     id: "local-vivi-andre",
     categoria_slug: "casamento",
     titulo: "Vivi & André",
-    bunny_video_id: "f41865ac-2238-46d8-9882-741672a84c6c",
-    vertical: true,
+    bunny_video_id: "1e02f337-ce6b-41b3-9025-74ea0890f250",
+    vertical: false,
     ordem: 1,
   },
   {
@@ -142,10 +145,10 @@ export const CAPAS_LOCAIS: Record<string, string> = {
 
 // Vídeo em destaque no topo da home (hero) — toca inteiro, mudo, em loop.
 export const DESTAQUE = {
-  bunny_video_id: "f41865ac-2238-46d8-9882-741672a84c6c",
+  bunny_video_id: "1e02f337-ce6b-41b3-9025-74ea0890f250",
   titulo: "Vivi & André",
   cliente: "Casamento",
-  vertical: true,
+  vertical: false,
 };
 
 // Fallback das categorias caso o Supabase esteja fora do ar — o site nunca
