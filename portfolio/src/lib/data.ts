@@ -1,6 +1,7 @@
 import { supabase, type Categoria, type Video } from "./supabase";
 import {
   VIDEOS_LOCAIS,
+  CATEGORIAS_LOCAIS,
   CATEGORIAS_FALLBACK,
   type VideoLocal,
 } from "./conteudo";
@@ -12,40 +13,53 @@ export type VideoExibicao = Pick<Video, "id" | "titulo" | "bunny_video_id" | "or
   cliente?: string;
 };
 
-// Busca todas as categorias, ordenadas pelo campo "ordem".
+// Todas as categorias: banco + locais, sem duplicar slug, ordenadas.
 // Se o Supabase estiver fora do ar, usa o fallback local — o site nunca abre vazio.
-export async function getCategorias(): Promise<Categoria[]> {
+async function getTodasCategorias(): Promise<Categoria[]> {
+  let doBanco: Categoria[] = [];
   try {
     const { data, error } = await supabase
       .from("categorias")
       .select("*")
       .order("ordem", { ascending: true });
-
     if (error) throw error;
-    if (!data || data.length === 0) return CATEGORIAS_FALLBACK;
-    return data;
+    doBanco = data ?? [];
   } catch {
-    return CATEGORIAS_FALLBACK;
+    doBanco = [];
   }
+  if (doBanco.length === 0) doBanco = CATEGORIAS_FALLBACK;
+
+  const slugsDoBanco = new Set(doBanco.map((c) => c.slug));
+  const locais = CATEGORIAS_LOCAIS.filter((c) => !slugsDoBanco.has(c.slug));
+
+  return [...doBanco, ...locais].sort((a, b) => a.ordem - b.ordem);
+}
+
+// Categorias exibidas na home: só as que têm pelo menos um vídeo —
+// pasta vazia não aparece no portfólio.
+export async function getCategorias(): Promise<Categoria[]> {
+  const todas = await getTodasCategorias();
+
+  let idsComVideo = new Set<string>();
+  try {
+    const { data } = await supabase.from("videos").select("categoria_id");
+    idsComVideo = new Set((data ?? []).map((v) => v.categoria_id));
+  } catch {
+    // sem banco, só os locais contam
+  }
+  const slugsLocais = new Set(VIDEOS_LOCAIS.map((v) => v.categoria_slug));
+
+  return todas.filter(
+    (c) => idsComVideo.has(c.id) || slugsLocais.has(c.slug)
+  );
 }
 
 // Busca uma categoria pelo slug (ex: "casamento").
 export async function getCategoriaPorSlug(
   slug: string
 ): Promise<Categoria | null> {
-  try {
-    const { data, error } = await supabase
-      .from("categorias")
-      .select("*")
-      .eq("slug", slug)
-      .maybeSingle();
-
-    if (error) throw error;
-    if (data) return data;
-  } catch {
-    // cai no fallback abaixo
-  }
-  return CATEGORIAS_FALLBACK.find((c) => c.slug === slug) ?? null;
+  const todas = await getTodasCategorias();
+  return todas.find((c) => c.slug === slug) ?? null;
 }
 
 function localParaExibicao(v: VideoLocal): VideoExibicao {
@@ -94,7 +108,7 @@ export async function getVideosPorCategoria(
         titulo: v.titulo,
         bunny_video_id: v.bunny_video_id,
         ordem: v.ordem,
-        vertical: local?.vertical ?? categoria.slug === "social",
+        vertical: local?.vertical ?? true,
         cliente: local?.cliente,
       };
     }),
