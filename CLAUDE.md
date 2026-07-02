@@ -115,7 +115,7 @@ Cada categoria é uma "pasta" visual. Ao clicar, abre uma página dedicada com o
 
 #### Etapa 4 — Deploy e domínio
 - [x] Projeto `miguel-edits` criado na Vercel (plano Hobby gratuito, time `miguelsmov`, login `saiberback-4170`) via CLI — `.vercel/` local guarda o link (gitignored)
-- [x] Deploy de produção no ar: **https://miguel-edits.vercel.app** (env vars públicas configuradas em production+preview pela CLI; deploy manual `npx vercel deploy --prod`)
+- [x] Deploy de produção no ar: **https://miguel-sansigolo.vercel.app** (env vars públicas configuradas em production+preview pela CLI; deploy manual `npx vercel deploy --prod`)
 - [ ] Conectar repositório GitHub à Vercel (deploy automático a cada push) — hoje o deploy é manual pela CLI
 - [ ] Configurar domínio personalizado (se tiver)
 
