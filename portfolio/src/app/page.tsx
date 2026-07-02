@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCategorias } from "@/lib/data";
 import { bunnyHeroEmbedUrl } from "@/lib/bunny";
-import { CAPAS_LOCAIS, DESTAQUE } from "@/lib/conteudo";
+import { CAPAS_LOCAIS, CURSOS, DESTAQUE } from "@/lib/conteudo";
 import { WHATSAPP_URL } from "@/lib/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -159,6 +159,44 @@ export default async function Home() {
               <p className="mt-2 text-sm leading-relaxed text-foreground/55">
                 {item.texto}
               </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- FORMAÇÃO ---------- */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="mb-2 font-display text-3xl font-semibold tracking-tight">
+          Formação
+        </h2>
+        <p className="mb-10 text-sm text-foreground/40">
+          Sempre estudando — cursos e imersões da área
+        </p>
+        <div className="grid gap-4 md:grid-cols-3">
+          {CURSOS.map((curso) => (
+            <div
+              key={curso.nome}
+              className="flex flex-col justify-between rounded-2xl border border-white/8 bg-surface p-6"
+            >
+              <div>
+                <h3 className="font-display font-semibold leading-snug">
+                  {curso.nome}
+                </h3>
+                <p className="mt-1.5 text-sm text-foreground/45">
+                  {curso.escola}
+                </p>
+              </div>
+              <span
+                className={`mt-4 inline-block w-fit rounded-full border px-3 py-1 text-xs ${
+                  curso.status === "concluído"
+                    ? "border-accent/40 text-accent"
+                    : "border-white/15 text-foreground/50"
+                }`}
+              >
+                {curso.status === "concluído"
+                  ? "✓ Concluído"
+                  : "Em andamento"}
+              </span>
             </div>
           ))}
         </div>

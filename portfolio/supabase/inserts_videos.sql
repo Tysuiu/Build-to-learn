@@ -30,17 +30,17 @@ select id, v.titulo, v.guid, v.ordem
 from categorias,
   (values
     ('Vivi & André', 'f41865ac-2238-46d8-9882-741672a84c6c', 1),
-    ('Pré-Wedding', '573e11e3-6261-44ae-b1d7-76c60b354d03', 2)
+    ('Brenda & Mariana', '573e11e3-6261-44ae-b1d7-76c60b354d03', 2)
   ) as v(titulo, guid, ordem)
 where categorias.slug = 'casamento'
 on conflict do nothing;
 
 -- ---- Social Media ----
+-- fora do ar por enquanto: 'Barbearia' guid 167d85bc-4332-4504-9b4c-23772c3fab04
 insert into videos (categoria_id, titulo, bunny_video_id, ordem)
 select id, v.titulo, v.guid, v.ordem
 from categorias,
   (values
-    ('Barbearia', '167d85bc-4332-4504-9b4c-23772c3fab04', 1),
     ('Mobility Gym', '8df6b068-40f9-4481-af21-b7624680a44a', 2)
   ) as v(titulo, guid, ordem)
 where categorias.slug = 'social'

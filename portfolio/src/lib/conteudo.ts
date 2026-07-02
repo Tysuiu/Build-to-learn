@@ -93,20 +93,15 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   {
     id: "local-pre-wedding",
     categoria_slug: "casamento",
-    titulo: "Pré-Wedding",
+    titulo: "Brenda & Mariana",
+    cliente: "Pré-Wedding",
     bunny_video_id: "573e11e3-6261-44ae-b1d7-76c60b354d03",
     vertical: true,
     ordem: 2,
   },
   // ---- Social Media ----
-  {
-    id: "local-barbearia",
-    categoria_slug: "social",
-    titulo: "Barbearia",
-    bunny_video_id: "167d85bc-4332-4504-9b4c-23772c3fab04",
-    vertical: true,
-    ordem: 1,
-  },
+  // "Barbearia" fora do ar (nome do cliente não identificado p/ marcar) —
+  // guid 167d85bc-4332-4504-9b4c-23772c3fab04 continua no Bunny.
   {
     id: "local-academia",
     categoria_slug: "social",
@@ -115,6 +110,31 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     bunny_video_id: "8df6b068-40f9-4481-af21-b7624680a44a",
     vertical: true,
     ordem: 2,
+  },
+];
+
+// Formação — cursos e imersões (também vira base para o LinkedIn do Miguel).
+export type Curso = {
+  nome: string;
+  escola: string;
+  status: "concluído" | "em andamento";
+};
+
+export const CURSOS: Curso[] = [
+  {
+    nome: "Filmmaker Pro — DaVinci Resolve do Básico ao Avançado",
+    escola: "Curso completo de edição",
+    status: "concluído",
+  },
+  {
+    nome: "Color Pro Express",
+    escola: "Marcelo Santana",
+    status: "em andamento",
+  },
+  {
+    nome: "Imersão: O Guia Completo do Sound Design de Filmes e Séries",
+    escola: "Áudio Didata",
+    status: "em andamento",
   },
 ];
 
