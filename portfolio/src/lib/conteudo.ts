@@ -31,15 +31,8 @@ export const CATEGORIAS_LOCAIS = [
 
 export const VIDEOS_LOCAIS: VideoLocal[] = [
   // ---- Institucional: CARDE (Museu do Automóvel) ----
-  {
-    id: "local-acervo-em-movimento",
-    categoria_slug: "institucional",
-    titulo: "Acervo em Movimento",
-    cliente: "CARDE — Museu do Automóvel",
-    bunny_video_id: "0a5237fc-9d20-429a-86e4-d04781d131ca",
-    vertical: true,
-    ordem: 1,
-  },
+  // "Acervo em Movimento" fora do ar até o CARDE postar (não publicar antes
+  // do cliente) — guid 0a5237fc-9d20-429a-86e4-d04781d131ca continua no Bunny.
   {
     id: "local-mercedes-sl600",
     categoria_slug: "institucional",
@@ -147,11 +140,11 @@ export const CAPAS_LOCAIS: Record<string, string> = {
   social: "/capas/social.jpg",
 };
 
-// Vídeo em destaque no topo da home (hero).
+// Vídeo em destaque no topo da home (hero) — toca inteiro, mudo, em loop.
 export const DESTAQUE = {
-  bunny_video_id: "0a5237fc-9d20-429a-86e4-d04781d131ca",
-  titulo: "Acervo em Movimento",
-  cliente: "CARDE — Museu do Automóvel",
+  bunny_video_id: "f41865ac-2238-46d8-9882-741672a84c6c",
+  titulo: "Vivi & André",
+  cliente: "Casamento",
   vertical: true,
 };
 

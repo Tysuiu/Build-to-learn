@@ -12,7 +12,8 @@ insert into videos (categoria_id, titulo, bunny_video_id, ordem)
 select id, v.titulo, v.guid, v.ordem
 from categorias,
   (values
-    ('Acervo em Movimento', '0a5237fc-9d20-429a-86e4-d04781d131ca', 1),
+    -- fora do ar até o CARDE postar:
+    -- ('Acervo em Movimento', '0a5237fc-9d20-429a-86e4-d04781d131ca', 1),
     ('Mercedes SL600', '4837ba90-68de-4753-9e37-2582f0ebeb43', 2),
     -- fora do ar por enquanto (Miguel, 02/07/2026):
     -- ('Noite no Museu', '0eee6fa5-9e16-4c07-9b5f-12f4a37ef76e', 3),
