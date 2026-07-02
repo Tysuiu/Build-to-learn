@@ -27,12 +27,30 @@ export const CATEGORIAS_LOCAIS = [
     ordem: 0, // primeira da home: é o corpo principal do portfólio hoje
     criado_em: "",
   },
+  {
+    id: "local-eventos",
+    slug: "eventos",
+    nome: "Eventos",
+    descricao: "De Paris a Campos do Jordão — a energia do evento em vídeo",
+    capa_url: null,
+    ordem: 1,
+    criado_em: "",
+  },
 ];
 
 export const VIDEOS_LOCAIS: VideoLocal[] = [
   // ---- Institucional: CARDE (Museu do Automóvel) ----
   // "Acervo em Movimento" fora do ar até o CARDE postar (não publicar antes
   // do cliente) — guid 0a5237fc-9d20-429a-86e4-d04781d131ca continua no Bunny.
+  {
+    id: "local-filho-da-humanidade",
+    categoria_slug: "institucional",
+    titulo: "O Filho da Humanidade",
+    cliente: "Fundação Lia Maria Aguiar",
+    bunny_video_id: "cd7e6826-2690-4fa7-a8ca-158886172f18",
+    vertical: true,
+    ordem: 1,
+  },
   {
     id: "local-mercedes-sl600",
     categoria_slug: "institucional",
@@ -74,6 +92,25 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     vertical: true,
     ordem: 7,
   },
+  // ---- Eventos ----
+  {
+    id: "local-paris-retromobile",
+    categoria_slug: "eventos",
+    titulo: "Paris Rétromobile",
+    cliente: "Evento em Paris, França",
+    bunny_video_id: "7f4785ff-dcb9-49c5-ae43-1805d6858cc5",
+    vertical: true,
+    ordem: 1,
+  },
+  {
+    id: "local-corso-carnavalesco",
+    categoria_slug: "eventos",
+    titulo: "Corso Carnavalesco",
+    cliente: "Carnaval 2026",
+    bunny_video_id: "524766ac-6191-48e2-82a1-984e30d42388",
+    vertical: true,
+    ordem: 2,
+  },
   // ---- Casamento ----
   // Versão horizontal 1920x1080 original (sem re-encode). A "vertical"
   // (guid f41865ac-2238-46d8-9882-741672a84c6c) está com os pixels
@@ -98,6 +135,14 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
   // ---- Social Media ----
   // "Barbearia" fora do ar (nome do cliente não identificado p/ marcar) —
   // guid 167d85bc-4332-4504-9b4c-23772c3fab04 continua no Bunny.
+  {
+    id: "local-asmr-f50",
+    categoria_slug: "social",
+    titulo: "ASMR F50",
+    bunny_video_id: "0afa01e1-15a1-4029-bcc7-6731bf547a99",
+    vertical: true,
+    ordem: 1,
+  },
   {
     id: "local-academia",
     categoria_slug: "social",
@@ -139,6 +184,7 @@ export const CURSOS: Curso[] = [
 // capa_url no banco, o banco vence.
 export const CAPAS_LOCAIS: Record<string, string> = {
   institucional: "/capas/institucional.jpg",
+  eventos: "/capas/eventos.jpg",
   casamento: "/capas/casamento.jpg",
   social: "/capas/social.jpg",
 };
