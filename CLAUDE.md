@@ -102,12 +102,16 @@ Cada categoria é uma "pasta" visual. Ao clicar, abre uma página dedicada com o
 - Next.js 16.2.9: `params` em rotas dinâmicas é `Promise` — sempre `await params`
 - Chaves em `portfolio/.env.local` (NÃO versionado): URL+anon do Supabase, Library ID + CDN Hostname + API Key do Bunny
 - Dados de exemplo: 3 categorias (Casamento, Corporativo, Social Media) inseridas via schema.sql
+- **Upload de vídeo pro Bunny funciona via API** (POST cria o vídeo → PUT do binário com `AccessKey`): não precisa do painel. 1º vídeo real: "Acervo em Movimento" (CARDE), guid `0a5237fc-9d20-429a-86e4-d04781d131ca`
+- Anon key do Supabase **não permite INSERT** (RLS leitura) → vídeos novos entram em `src/lib/conteudo.ts` (mesclados em `data.ts`) e o SQL de migração fica em `supabase/inserts_videos.sql` para rodar no painel
+- Acesso direto a `thumbnail.jpg`/HLS do Bunny retorna 403 (proteção da library) — só o embed funciona; OG image é frame local (`public/og.jpg`)
 
 #### Etapa 3 — Design e identidade visual
-- [ ] Miguel envia referências de sites
-- [ ] Escolher fontes e paleta de cores
-- [ ] Aplicar design nas páginas
-- [ ] Responsividade (mobile-first, já que portfólio de Reels/TikTok = vertical)
+- [x] Referências pesquisadas pelo Claude na web (padrões: dark cinematográfico, hero com reel, grid curado, mobile-first) — v1 aplicada, aguardando aval do Miguel
+- [x] Fontes e paleta v1: Space Grotesk (display) + Geist (texto); fundo #0a0a0b, dourado #e0aa3e de acento, verde só no WhatsApp
+- [x] Design aplicado nas páginas (home: nav fixa com blur, hero com reel 9:16 em autoplay, grid de categorias, seção "Cada detalhe conta"; categoria: cards 9:16/16:9 conforme formato)
+- [x] Responsividade mobile-first
+- [ ] Revisão do design com Miguel (ajustes de gosto)
 
 #### Etapa 4 — Deploy e domínio
 - [ ] Conectar repositório à Vercel
@@ -116,17 +120,18 @@ Cada categoria é uma "pasta" visual. Ao clicar, abre uma página dedicada com o
 - [ ] SSL e configurações de produção
 
 #### Etapa 5 — Polish e lançamento
-- [ ] Lazy loading dos vídeos (performance)
-- [ ] SEO básico (meta tags, Open Graph para preview ao compartilhar link)
+- [x] Lazy loading dos vídeos (performance) — `loading="lazy"` nos iframes das categorias
+- [x] SEO básico (meta tags pt-BR + Open Graph com frame do reel em `public/og.jpg`)
 - [ ] Testes em mobile e desktop
 - [ ] Revisão final com Miguel
 - [ ] Publicação oficial
 
 ### Referências visuais
-*(Miguel vai enviar na Etapa 3)*
+Pesquisa web (02/07/2026): consenso entre portfólios de editores — tema escuro espaçoso deixando o vídeo como protagonista, hero reel no topo, grade curada (3 ótimos > 10 medianos), papel claro em cada projeto, CTA de contato direto, mobile-first. Fontes: sitebuilderreport.com, lesfm.net, templyo.io.
 
 ### Preferências aprendidas
-*(Será preenchido ao longo do projeto)*
+- Vídeos verticais (Reels) devem aparecer em moldura 9:16 tipo celular — formato nativo do trabalho
+- Identidade v1 proposta pelo Claude (dourado + dark) inspirada no universo dos clientes (museu CARDE, carros clássicos) — **pendente aval do Miguel**
 
 ---
 
