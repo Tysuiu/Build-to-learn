@@ -60,46 +60,15 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     vertical: true,
     ordem: 2,
   },
-  {
-    id: "local-asmr-f50",
-    categoria_slug: "institucional",
-    titulo: "ASMR F50",
-    bunny_video_id: "0afa01e1-15a1-4029-bcc7-6731bf547a99",
-    vertical: true,
-    ordem: 3,
-  },
   // Fora do ar por decisão do Miguel (02/07/2026) — vídeos continuam no Bunny:
   //   "Noite no Museu"      guid 0eee6fa5-9e16-4c07-9b5f-12f4a37ef76e
   //   "Escola de Restauro"  guid 32e78dff-4bc0-4bb0-bc86-f355e9088c4c
+  // Fora do ar por decisão do Miguel (03/07/2026) — vídeos continuam no Bunny:
+  //   "ASMR F50"            guid 0afa01e1-15a1-4029-bcc7-6731bf547a99
+  //   "Anoitecer na Murano" guid 09edf0af-4016-4a9e-8792-3c9329184556
+  //   "Café na Murano"      guid dc6cf4b4-b532-4518-9ef7-e228ae43943b
+  //   "Experiência Murano"  guid cdfd47bf-5db4-46fc-bc5e-213ab092e3cd
 
-  // ---- Institucional: Murano Pousada Boutique ----
-  {
-    id: "local-murano-noite",
-    categoria_slug: "institucional",
-    titulo: "Anoitecer na Murano",
-    cliente: "Murano Pousada Boutique",
-    bunny_video_id: "09edf0af-4016-4a9e-8792-3c9329184556",
-    vertical: true,
-    ordem: 5,
-  },
-  {
-    id: "local-cafe-murano",
-    categoria_slug: "institucional",
-    titulo: "Café na Murano",
-    cliente: "Murano Pousada Boutique",
-    bunny_video_id: "dc6cf4b4-b532-4518-9ef7-e228ae43943b",
-    vertical: true,
-    ordem: 6,
-  },
-  {
-    id: "local-ensaio-murano",
-    categoria_slug: "institucional",
-    titulo: "Experiência Murano",
-    cliente: "Murano Pousada Boutique",
-    bunny_video_id: "cdfd47bf-5db4-46fc-bc5e-213ab092e3cd",
-    vertical: true,
-    ordem: 7,
-  },
   // ---- Eventos ----
   {
     id: "local-paris-retromobile",
@@ -131,27 +100,16 @@ export const VIDEOS_LOCAIS: VideoLocal[] = [
     vertical: false,
     ordem: 1,
   },
-  {
-    id: "local-pre-wedding",
-    categoria_slug: "casamento",
-    titulo: "Brenda & Mariana",
-    cliente: "Pré-Wedding",
-    bunny_video_id: "573e11e3-6261-44ae-b1d7-76c60b354d03",
-    vertical: true,
-    ordem: 2,
-  },
+  // Fora do ar por decisão do Miguel (03/07/2026) — continua no Bunny:
+  //   "Brenda & Mariana" (Pré-Wedding) guid 573e11e3-6261-44ae-b1d7-76c60b354d03
+
   // ---- Social Media ----
+  // Categoria retirada da home por decisão do Miguel (03/07/2026) — sem
+  // vídeos locais ela não aparece (mesma regra que oculta a Corporativo).
   // "Barbearia" fora do ar (nome do cliente não identificado p/ marcar) —
   // guid 167d85bc-4332-4504-9b4c-23772c3fab04 continua no Bunny.
-  {
-    id: "local-academia",
-    categoria_slug: "social",
-    titulo: "Mobility Gym",
-    cliente: "Mobility GYM — Personal Club · Campos do Jordão",
-    bunny_video_id: "8df6b068-40f9-4481-af21-b7624680a44a",
-    vertical: true,
-    ordem: 2,
-  },
+  // "Mobility Gym" fora do ar junto com a categoria —
+  // guid 8df6b068-40f9-4481-af21-b7624680a44a continua no Bunny.
 ];
 
 // Formação — cursos e imersões (também vira base para o LinkedIn do Miguel).
